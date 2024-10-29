@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Word Completion Game</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background-color: #f0f8ff; color: #333; }
+        .game-container { margin-top: 50px; padding: 20px; border-radius: 8px; background-color: #fff3e0; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); }
+        .level-selection { margin-top: 20px; }
+        .level-button { padding: 10px 20px; margin: 10px; cursor: pointer; color: #fff; font-weight: bold; border: none; border-radius: 5px; }
+        .level-button.easy { background-color: #4CAF50; }
+        .level-button.medium { background-color: #FFA500; }
+        .level-button.hard { background-color: #f44336; }
+        .timer, .word-display, .hint-display { margin: 20px; font-size: 24px; }
+        .letter-input { border: none; border-bottom: 2px solid #333; width: 20px; font-size: 24px; text-align: center; color: #333; background-color: #fff3e0; }
+        .button { padding: 10px 20px; cursor: pointer; background-color: #007bff; color: #fff; border: none; border-radius: 5px; font-weight: bold; }
+        .feedback { margin: 20px; font-size: 18px; font-weight: bold; }
+        .feedback.correct { color: #28a745; }
+        .feedback.incorrect { color: #dc3545; }
+        .score-container, .progress-container { display: inline-block; margin: 20px; padding: 15px; border-radius: 10px; background-color: #e0f7fa; box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2); }
+        .score-container h2, .progress-container h2 { margin: 0; font-size: 24px; color: #007bff; }
+        .leaderboard { margin-top: 30px; font-size: 20px; }
+        .leaderboard-table { width: 60%; margin: 0 auto; border-collapse: collapse; background-color: #fff; }
+        .leaderboard-table th, .leaderboard-table td { padding: 12px; border: 1px solid #ddd; text-align: center; }
+        .leaderboard-table th { background-color: #007bff; color: #fff; }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <h1 style="color: #007bff;">Word Completion Game</h1>
+        <div class="level-selection">
+            <p>Select Game Level:</p>
+            <button class="level-button easy" onclick="setLevel('easy')">Easy</button>
+            <button class="level-button medium" onclick="setLevel('medium')">Medium</button>
+            <button class="level-button hard" onclick="setLevel('hard')">Hard</button>
+        </div>
+        <div id="gameInterface" style="display: none;">
+            <div class="timer">Time left: <span id="timer">60</span> seconds</div>
+            <div class="word-display" id="wordDisplay"></div>
+            <div class="hint-display">Hint: <span id="hint"></span></div>
+            <div class="score-container">
+                <h2>Score: <span id="score">0</span></h2>
+            </div>
+            <div class="progress-container">
+                <h2>Progress: <span id="progress">0</span>/10</h2>
+            </div>
+            <button class="button" onclick="submitAnswer()">Submit</button>
+            <div id="feedback" class="feedback"></div>
+        </div>
+        <div id="leaderboard" class="leaderboard" style="display: none;"></div>
+    </div>
+    <script src="game.js"></script>
+</body>
+</html>
